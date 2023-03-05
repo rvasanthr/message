@@ -1,14 +1,26 @@
-// D.O.M for form
+// DOM LINKS
+// #message-form
 const messageForm = document.querySelector('#message-form');
-// D.O.M link for link form
+// #link-form
 const linkForm = document.querySelector('#link-form');
-// D.O.M link for form>input for create message
+// #message-input
 const messageInput = document.querySelector('#message-input');
-// D.O.M link for encrypted message input
+// #link-input
 const messageLinkInput = document.querySelector('#link-input');
+// #show-message
+const showMessage = document.querySelector('#message-show');
+// Extracting Secret Message
 // Destructuring the HASH from window.location object
 const { hash } = window.location;
-console.log(atob(hash.replace('#', '')));
+const secretMessage = atob(hash.replace('#', ''));
+// If secret message exists, then reveal it
+if (secretMessage) {
+    // removes the hide class from #message-show div and adds it to messageForm
+    showMessage.classList.remove('hide');
+    showMessage.querySelector('h1').innerHTML = secretMessage;
+    document.querySelector('#message-show').classList.remove('hide');
+    messageForm.classList.add('hide');
+}
 // Event Listener on form submit
 messageForm.addEventListener('submit', event => {
     // Prevents submission of form (default behaviour)
