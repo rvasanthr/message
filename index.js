@@ -6,6 +6,9 @@ const linkForm = document.querySelector('#link-form');
 const messageInput = document.querySelector('#message-input');
 // D.O.M link for encrypted message input
 const messageLinkInput = document.querySelector('#link-input');
+// Destructuring the HASH from window.location object
+const { hash } = window.location;
+console.log(atob(hash.replace('#', '')));
 // Event Listener on form submit
 messageForm.addEventListener('submit', event => {
     // Prevents submission of form (default behaviour)
